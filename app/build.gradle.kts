@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.houvven.impad"
+    namespace = "com.tencent.tablet"
     compileSdk = 34
 
     defaultConfig {

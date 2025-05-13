@@ -1,4 +1,4 @@
-package com.houvven.impad
+package com.tencent.tablet
 
 import android.content.Context
 import android.os.Process
@@ -60,7 +60,13 @@ object HookEntrance : IYukiHookXposedInit {
     }
 
     private fun PackageParam.processWeChat() {
-        simulateTabletModel("samsung", "SM-F9560")
+        simulateTabletModel(
+            brand = "OPPO",
+            model = "PHN110",
+            manufacturer = "OPPO",
+            name = "PHN110",
+            device = "PHN110"
+        )
         onAppLifecycle {
             onCreate {
                 try {
@@ -116,11 +122,19 @@ object HookEntrance : IYukiHookXposedInit {
         }
     }
 
-    private fun simulateTabletModel(brand: String, model: String, manufacturer: String = brand) {
+    private fun simulateTabletModel(
+        brand: String, 
+        model: String, 
+        manufacturer: String = brand,
+        name: String = model,
+        device: String = model
+    ) {
         BuildClass.run {
             field { name("MANUFACTURER") }.get(null).set(manufacturer)
             field { name("BRAND") }.get(null).set(brand)
             field { name("MODEL") }.get(null).set(model)
+            field { name("PRODUCT") }.get(null).set(name)
+            field { name("DEVICE") }.get(null).set(device)
         }
     }
 

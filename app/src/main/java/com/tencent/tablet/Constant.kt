@@ -1,4 +1,4 @@
-package com.houvven.impad
+package com.tencent.tablet
 
 import com.highcapable.yukihookapi.hook.factory.toClass
 
